@@ -49,6 +49,52 @@ public class CreateUserFormController {
 
 
     }
+    public void autoGenerate(){
+
+        Connection connection = DBconnection.getInstance().getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select id from user order by id desc limit 1");
+
+            boolean isExist = resultSet.next();
+
+            if(isExist){
+
+                String oldId = resultSet.getString(1);
+                System.out.println("oldId");
+
+                int length = oldId.length();
+                System.out.println("oldId :"+oldId);
+                System.out.println("length :"+length);
+                String substringId = oldId.substring(1, length);
+                int intId = Integer.parseInt(substringId);
+                System.out.println("old int id : "+intId);
+                intId++;
+                System.out.println("new int id : "+intId);
+
+                if(intId<10){
+                    lblUserId.setText("u00"+intId);
+                }else if(intId<100){
+                    lblUserId.setText("u0"+intId);
+
+                }else {
+                    lblUserId.setText("u"+intId);
+                }
+
+
+            }
+            else {
+                lblUserId.setText("u001");
+
+            }
+
+
+        } catch (SQLException throwables) {
+            //  System.out.println("sssssssssss");
+            throwables.printStackTrace();
+        }
+    }
+
 
 
 }
