@@ -117,6 +117,53 @@ public class CreateUserFormController {
             pwdNewPassword.requestFocus();
         }
     }
+    public void addData()  {
+        String id = lblUserId.getText();
+        String name=txtUserName.getText();
+        String email = txtEnterEmail.getText();
+        String password = pwdNewPassword.getText();
+
+        Connection connection = DBconnection.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into user values(?,?,?,?)");
+            preparedStatement.setObject(1,id);
+            preparedStatement.setObject(2,name);
+            preparedStatement.setObject(3,password);
+            preparedStatement.setObject(4,email);
+
+            int i = preparedStatement.executeUpdate();
+            System.out.println(i);
+
+            if(i!=0){
+                new Alert(Alert.AlertType.CONFIRMATION,"user created successfully...").showAndWait();
+
+                try {
+                    Parent parent =FXMLLoader.load(getClass().getResource("../view/LoginForm.fxml"));
+                    Scene scene=new Scene(parent);
+
+                    Stage stage= (Stage) this.root.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.setTitle("login form");
+                    stage.centerOnScreen();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            else{
+                new Alert(Alert.AlertType.ERROR,"somthing went wrong").showAndWait();
+
+            }
+
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+    }
 
 
 
