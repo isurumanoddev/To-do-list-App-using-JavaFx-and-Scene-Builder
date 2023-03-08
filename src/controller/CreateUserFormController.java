@@ -15,4 +15,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 public class CreateUserFormController {
+    public Label lblUserId;
+    public TextField txtUserName;
+    public TextField txtEnterEmail;
+    public PasswordField pwdNewPassword;
+    public PasswordField pwdConfirmPassword;
+    public Label lblPasswordNotMatchConfirmPassword;
+    public Label lblPasswordNotMatchNewPassword;
+    public AnchorPane root;
+
+
+
+
 }
