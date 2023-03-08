@@ -94,6 +94,29 @@ public class CreateUserFormController {
             throwables.printStackTrace();
         }
     }
+    public void btnOnActionRegister(ActionEvent actionEvent) {
+        String newpassword=pwdNewPassword.getText();
+        String confirmpassword = pwdConfirmPassword.getText();
+
+        if(newpassword.equals(confirmpassword)){
+            pwdNewPassword.setStyle("-fx-border-color:transparent");
+            pwdConfirmPassword.setStyle("-fx-border-color:transparent");
+            lblPasswordNotMatchConfirmPassword.setVisible(false);
+            lblPasswordNotMatchNewPassword.setVisible(false);
+
+            addData();
+
+
+        }else{
+            lblPasswordNotMatchNewPassword.setVisible(true);
+            lblPasswordNotMatchConfirmPassword.setVisible(true);
+            pwdNewPassword.setStyle("-fx-border-color:red");
+            pwdConfirmPassword.setStyle("-fx-border-color:red");
+            pwdNewPassword.clear();
+            pwdConfirmPassword.clear();
+            pwdNewPassword.requestFocus();
+        }
+    }
 
 
 
