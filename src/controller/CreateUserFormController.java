@@ -24,7 +24,14 @@ public class CreateUserFormController {
     public Label lblPasswordNotMatchNewPassword;
     public AnchorPane root;
 
-
+    public void initialize(){
+        txtUserName.setDisable(true);
+        txtEnterEmail.setDisable(true);
+        pwdNewPassword.setDisable(true);
+        pwdConfirmPassword.setDisable(true);
+        lblPasswordNotMatchNewPassword.setVisible(false);
+        lblPasswordNotMatchConfirmPassword.setVisible(false);
+    }
 
 
 }
