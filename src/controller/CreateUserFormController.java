@@ -33,5 +33,22 @@ public class CreateUserFormController {
         lblPasswordNotMatchConfirmPassword.setVisible(false);
     }
 
+    public void btnOnActionAddNewUser(ActionEvent actionEvent) {
+        txtUserName.setDisable(false);
+        txtEnterEmail.setDisable(false);
+        pwdNewPassword.setDisable(false);
+        pwdConfirmPassword.setDisable(false);
+
+
+        txtUserName.requestFocus();
+
+        Connection connection = DBconnection.getInstance().getConnection();
+        System.out.println(connection);
+        autoGenerate();
+
+
+
+    }
+
 
 }
